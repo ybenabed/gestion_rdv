@@ -1,0 +1,49 @@
+﻿<Window x:Class="gestion_rdv.selectPatient"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        SizeToContent="WidthAndHeight" WindowStyle="ToolWindow" MaxHeight="450" MaxWidth="853" MinWidth="850" MinHeight="300" >
+    <Grid Grid.Row="1" Grid.RowSpan="4" Name="patientGrid" Visibility="Visible">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Label Content=" Selectionnez un patient" FontSize="16" Grid.Row="0" Foreground="DodgerBlue" FontWeight="Bold"
+               Grid.ColumnSpan="6"/>
+        <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.ColumnSpan="4" Grid.Row="1" Grid.RowSpan="1">
+            <Label Content="Nom     " FontSize="16" VerticalAlignment="Center"/>
+            <TextBox Name="nomPatGrid" Width="140" FontSize="15" VerticalAlignment="Center" KeyUp="nomPatGrid_KeyUp"/>
+            <Label Content="      Prenom     " FontSize="16" VerticalAlignment="Center"/>
+            <TextBox Name="prenomPatGrid" Width="140" FontSize="15" VerticalAlignment="Center" KeyUp="nomPatGrid_KeyUp"/>
+        </StackPanel>
+        <DataGrid IsReadOnly="True" Name="patientsDataGrid" Grid.Row="2" Grid.RowSpan="11" HorizontalAlignment="Center" 
+                      Grid.Column="0" Grid.ColumnSpan="8" SelectionMode="Single" KeyUp="patientsDataGrid_KeyUp"
+                  VerticalAlignment="Top">
+            <DataGrid.ItemContainerStyle>
+                <Style TargetType="DataGridRow">
+                    <EventSetter Event="MouseDoubleClick" Handler="_MouseDoubleClick"/>
+                </Style>
+            </DataGrid.ItemContainerStyle>
+        </DataGrid>
+    </Grid>
+</Window>

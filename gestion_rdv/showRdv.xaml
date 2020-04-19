@@ -1,0 +1,69 @@
+﻿<Window x:Class="gestion_rdv.showRdv"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Title="showRdv" Height="450" Width="350" MaxWidth="350" MinWidth="350" WindowStyle="None">
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Background="#0c4a60" Grid.Row="0" VerticalAlignment="Top" MouseDown="Grid_MouseDown" Name="ggrid">
+            <StackPanel >
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button Name="closeButton" Background="Transparent" VerticalAlignment="Center" Height="auto" Width="auto"
+                            Click="closeButton_Click" MouseEnter="closeButton_MouseEnter" MouseLeave="closeButton_MouseLeave">
+                        <materialDesign:PackIcon Kind="Close" Height="15" Width="15" />
+                    </Button>
+                    <Label  />
+                </StackPanel>
+
+            </StackPanel>
+        </Grid>
+
+        <Label Name="date" Foreground="#FFD54A42" FontSize="16" FontWeight="Bold" Grid.Row="1" VerticalAlignment="Top"/>
+
+        <ScrollViewer Name="appscroll" Grid.Row="2">
+            <StackPanel Name="appointementStack">
+                <Grid Margin="5" MouseEnter="Rectangle_MouseEnter" MouseLeave="Rectangle_MouseLeave" Visibility="Collapsed">
+                    <Rectangle Stroke="Black" RadiusX="10" RadiusY="10">
+                    </Rectangle>
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Benabed Youcef à " FontWeight="Bold" VerticalAlignment="Center" Name="nameLabel"/>
+                            <Label>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBox BorderBrush="Transparent" materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                                                 FontSize="12" MaxLength="2" BorderThickness="0" Text="00" Name="hour"
+                                             PreviewKeyDown="increment_KeyDown" PreviewTextInput="time_PreviewTextInput"
+                                             LostFocus="time_LostFocus"/>
+                                    <Label Content=":"/>
+                                    <TextBox BorderBrush="Transparent" materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                                                 FontSize="12" MaxLength="2" BorderThickness="0" Text="00" Name="minute"
+                                             PreviewKeyDown="increment_KeyDown" PreviewTextInput="time_PreviewTextInput"
+                                             LostFocus="time_LostFocus"/>
+                                </StackPanel>
+                            </Label>
+                        </StackPanel>
+                        <TextBox HorizontalAlignment="Stretch" Margin="10" AcceptsReturn="True"
+                                     TextWrapping="Wrap" Name="description"/>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                            <Label Cursor="Hand" Name="ajouterRDV" MouseLeftButtonUp="ajouterRDV_MouseLeftButtonUp">
+                                <TextBlock TextDecorations="Underline" Text="Ajouter" Foreground="Purple"/>
+                            </Label>
+                            <Label Cursor="Hand" Name="annulerAjout" MouseLeftButtonUp="annulerAjout_MouseLeftButtonUp">
+                                <TextBlock TextDecorations="Underline" Text="Annuler" Foreground="Purple"/>
+                            </Label>
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
+        </ScrollViewer>
+
+        <Label Cursor="Hand" HorizontalAlignment="Center" Visibility="Hidden" Name="addNewLabel">
+            <materialDesign:PackIcon Kind="Plus" Foreground="#FF84F184" Width="40" Height="40"/>
+        </Label>
+
+    </Grid>
+</Window>
